@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand-virtual-engineer.png">
+<title>Documentation — Virtual Engineer</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/docs.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div style="min-height: 100%;">
+
+  <header class="ve-docs-header">
+    <div class="ve-docs-topbar">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: var(--text);">
+        <img class="ve-brand-logo" src="assets/brand-virtual-engineer.png" alt="" aria-hidden="true">
+        <span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em;">Virtual Engineer</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 12px 22px; flex-wrap: wrap; justify-content: center;">
+        <a href="index.html#how" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">How it works</a>
+        <a href="documentation.html" class="ve-nav-link" style="font-size: 13px; color: var(--text); font-weight: 500; border-bottom: 1.5px solid var(--info);">Docs</a>
+        <a href="integrations.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Integrations</a>
+        <a href="security.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Security</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="https://github.com/savoirfairelinux/virtual-engineer" target="_blank" rel="noopener" title="View source on GitHub" class="ve-gh-link">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+        </a>
+        <button class="ve-theme-toggle" type="button" aria-label="Switch to light theme">Light</button>
+        <a href="index.html#quickstart" class="ve-btn-primary">Get Started</a>
+      </div>
+    </div>
+    <nav class="ve-docs-tabs" id="docs-tabs"></nav>
+  </header>
+
+  <div class="ve-progress-track" aria-hidden="true"><div class="ve-progress-bar"></div></div>
+
+  <div class="ve-docs-layout">
+    <aside class="ve-docs-sidebar">
+      <span class="ve-docs-sidebar-label">In this section</span>
+      <div id="docs-sidebar-list" style="display: flex; flex-direction: column; gap: 2px;"></div>
+      <a href="#/docs-map" class="ve-side" style="color: var(--text-faint); margin-top: 14px;">All pages</a>
+    </aside>
+
+    <div class="ve-doc ve-docs-content">
+      <div class="ve-crumb">
+        <span id="docs-crumb-section"></span>
+        <span>/</span>
+        <span class="cur" id="docs-crumb-page"></span>
+      </div>
+      <h1 id="docs-title" style="font-size: clamp(26px, 3.4vw, 34px); letter-spacing: -0.02em; font-weight: 600; margin: 0 0 12px; line-height: 1.2;"></h1>
+      <p id="docs-desc" style="font-size: 15.5px; line-height: 1.7; color: var(--text-dim); margin: 0 0 8px; max-width: 660px;"></p>
+
+      <div class="ve-hub-grid" id="docs-cards"></div>
+
+      <div id="docs-content"></div>
+
+      <div class="ve-doc-footer">
+        <span style="font-size: 12.5px; color: var(--text-ghost);">Something wrong on this page?</span>
+        <div class="ve-doc-footer-links">
+          <a href="https://github.com/savoirfairelinux/virtual-engineer/tree/main/docs" target="_blank" rel="noopener" style="font-size: 12.5px;">Edit source</a>
+          <a href="https://github.com/savoirfairelinux/virtual-engineer/issues/new" target="_blank" rel="noopener" style="font-size: 12.5px;">Raise an issue</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1180px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 64px) 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-soft); flex-wrap: wrap; gap: 16px;">
+    <span style="font-size: 12.5px; color: var(--text-faint);">© 2026 Virtual Engineer · GPL-3.0-only</span>
+    <a href="index.html" style="font-size: 12.5px; color: var(--text-faint);">← Back to overview</a>
+  </div>
+</div>
+
+<script src="assets/docs-data.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

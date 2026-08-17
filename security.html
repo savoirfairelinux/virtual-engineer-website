@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand-virtual-engineer.png">
+<title>Security — Virtual Engineer</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div style="min-height: 100%;">
+
+  <div class="ve-secondary-nav">
+    <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: var(--text);">
+      <img class="ve-brand-logo" src="assets/brand-virtual-engineer.png" alt="" aria-hidden="true">
+      <span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em;">Virtual Engineer</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 12px 22px; flex-wrap: wrap; justify-content: center;">
+      <a href="index.html#how" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">How it works</a>
+      <a href="documentation.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Docs</a>
+      <a href="integrations.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Integrations</a>
+      <a href="security.html" class="ve-nav-link" style="font-size: 13px; color: var(--text); font-weight: 500; border-bottom: 1.5px solid var(--info);">Security</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="https://github.com/savoirfairelinux/virtual-engineer" target="_blank" rel="noopener" title="View source on GitHub" class="ve-gh-link">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+      </a>
+      <button class="ve-theme-toggle" type="button" aria-label="Switch to light theme">Light</button>
+      <a href="index.html#quickstart" class="ve-btn-primary">Get Started</a>
+    </div>
+  </div>
+
+  <div class="ve-progress-track" aria-hidden="true"><div class="ve-progress-bar"></div></div>
+
+  <div class="ve-page-hero is-narrow">
+    <h1 style="font-size: clamp(32px, 4vw, 46px); letter-spacing: -0.02em; font-weight: 600; margin: 16px 0 16px;">Autonomous doesn't mean unsupervised.</h1>
+    <p style="font-size: 15.5px; line-height: 1.65; color: var(--text-dim); margin: 0; max-width: 620px;">The agent runs with the least access it needs: an ephemeral OpenShell sandbox per cycle, no push or review credentials inside it, and a record of everything it did.</p>
+  </div>
+
+  <div class="ve-page-section is-first ve-feature-stack">
+    <div class="ve-feature-card">
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Ephemeral OpenShell sandboxes</div>
+      <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">One sandbox per cycle, destroyed on exit, under a deny-by-default runtime policy. The agent never holds provider credentials.</div>
+    </div>
+    <div class="ve-feature-card">
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Full audit trail</div>
+      <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Every state transition, retry, and comment is recorded — nothing happens off the record.</div>
+    </div>
+    <div class="ve-feature-card">
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">You stay in control</div>
+      <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Pause, resume, or abandon any task at any time. Nothing merges without your review process.</div>
+    </div>
+  </div>
+
+  <div class="ve-page-section is-split">
+    <div>
+      <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 12px;">What the sandbox gets</h2>
+      <p style="font-size: 14px; line-height: 1.7; color: var(--text-dim); margin: 0;">Each cycle runs in an ephemeral OpenShell sandbox, created per cycle and destroyed on exit. Network, filesystem, process, and inference access are denied by default; the resolved policy grants only the declared exceptions. The orchestrator clones host-side, uploads the workspace, executes the agent, downloads the result, then pushes from the trusted host. Provider push and review credentials never enter the sandbox.</p>
+    </div>
+    <span class="ve-code">version: 1
+filesystem_policy:
+  read_only:  [/usr, /lib, /proc, /dev/urandom,
+               /app, /etc, /var/log]
+  read_write: [/sandbox, /tmp, /dev/null]
+process:
+  run_as_user: sandbox</span>
+  </div>
+
+  <div class="ve-page-section">
+    <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 18px;">Boundaries</h2>
+    <div class="ve-boundary-list">
+      <div class="ve-boundary-row">
+        <span class="ve-boundary-label">filesystem</span>
+        <span class="ve-boundary-value">Only /sandbox, /tmp and /dev/null are writable. A read_write entry naming /, /usr, /lib, /etc, /app, /bin, /sbin, /boot or /var is rejected.</span>
+      </div>
+      <div class="ve-boundary-row">
+        <span class="ve-boundary-label">process</span>
+        <span class="ve-boundary-value">Process access is denied by default and runs as the unprivileged sandbox user; enforceSandboxFloor re-asserts the floor after any policy override.</span>
+      </div>
+      <div class="ve-boundary-row">
+        <span class="ve-boundary-label">network</span>
+        <span class="ve-boundary-value">Network access is denied by default. Each run opens only the hosts its adapter declares through allowEgress.</span>
+      </div>
+      <div class="ve-boundary-row">
+        <span class="ve-boundary-label">credentials</span>
+        <span class="ve-boundary-value">The host owns all push and review credentials and runs the Git plumbing itself. They never enter the sandbox.</span>
+      </div>
+      <div class="ve-boundary-row">
+        <span class="ve-boundary-label">mcp surface</span>
+        <span class="ve-boundary-value">The internal VE MCP server exposes only ve_submit_review or ve_submit_changes — no network tools, no database, no Docker socket.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 64px) 0;">
+    <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 18px;">Secrets and webhooks</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px;">
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 22px;">
+        <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 8px;">Rotatable per integration</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Each integration holds its own webhook secret and credentials. Rotating one never interrupts the others.</div>
+      </div>
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 22px;">
+        <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 8px;">Signed deliveries</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">GitLab and GitHub events are verified with HMAC signatures before anything is queued. Gerrit uses a persistent SSH stream instead.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 64px) 0; display: flex; flex-direction: column-reverse; gap: 24px;">
+    <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 18px 20px; display: flex; flex-direction: column; gap: 7px; min-width: 0; overflow-x: auto;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+        <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint);">Audit log — task #4812</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-ghost);">append-only</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:02:11</span>
+        <span style="color: var(--info); flex: none; width: 130px;">DETECTED</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">redmine#4812 assigned to virtual-engineer</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:02:14</span>
+        <span style="color: var(--info); flex: none; width: 130px;">CONTEXT_BUILDING</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">workspace cloned host-side, sandbox ve-a91c created</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:03:40</span>
+        <span style="color: var(--info); flex: none; width: 130px;">AGENT_RUNNING</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">patch generated, 3 files, 118 insertions</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:03:52</span>
+        <span style="color: var(--info); flex: none; width: 130px;">IN_REVIEW</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">merge request !219 opened on payments-api</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:06:03</span>
+        <span style="color: var(--info); flex: none; width: 130px;">REVIEW_VOTE</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">+1 with 2 inline comments</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:11:27</span>
+        <span style="color: var(--info); flex: none; width: 130px;">RETRY_CYCLE</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">feedback deduplicated, sandbox ve-b04f created</span>
+      </div>
+      <div style="display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; min-width: 0;">
+        <span style="color: var(--text-ghost); flex: none;">14:18:09</span>
+        <span style="color: var(--info); flex: none; width: 130px;">MERGED</span>
+        <span style="color: var(--text-dim); flex: 1; min-width: 0;">merged by a.dupont — branch protection satisfied</span>
+      </div>
+    </div>
+    <div style="max-width: 660px;">
+      <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 12px;">Every cycle on the record</h2>
+      <p style="font-size: 14px; line-height: 1.7; color: var(--text-dim); margin: 0;">State transitions, retries, review votes, and comments are written to an append-only log tied to the task. Nothing is edited after the fact, so a task can be replayed exactly as it ran — including the cycles that failed.</p>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 64px) 0;">
+    <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 18px;">What is stored, what never is</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px;">
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 22px;">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ok); margin-bottom: 14px;">Stored</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Task metadata: title, description, and git author fields</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Every state transition in state_transitions, with metadata</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Diffs and review comments the agent produced</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Provider credentials, AES-256-GCM encrypted in SQLite and masked on every admin read</div>
+      </div>
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 22px;">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px;">Never stored</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Plaintext credentials — plaintext credential writes are rejected</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Webhook secrets in readable form after creation — rotation is per integration</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Sandbox filesystems — the sandbox is destroyed when the cycle exits</div>
+        <div style="font-size: 13px; line-height: 1.7; color: var(--text-dim); padding: 5px 0; border-top: 1px solid var(--border-soft);">Source code beyond the repositories you bind</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 64px) 0;">
+    <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 18px;">Operator controls</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px;">
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--info); margin-bottom: 10px;">PAUSE</div>
+        <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 6px;">Pause a task</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Recorded as a state_transitions row, so pausing and resuming are part of the same audit trail.</div>
+      </div>
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--info); margin-bottom: 10px;">ABANDON</div>
+        <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 6px;">Abandon a task</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Moves the task to the terminal ABANDONED state, persists the reason, and leaves the log intact.</div>
+      </div>
+      <div style="background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--info); margin-bottom: 10px;">ROTATE</div>
+        <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 6px;">Rotate a secret</div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Replaces a webhook secret or token per integration, effective on the next delivery.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 820px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 64px) 0;">
+    <h2 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 18px;">Common questions</h2>
+    <div style="padding: 18px 0; border-top: 1px solid var(--border-soft);">
+      <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 7px;">Can the agent merge its own work?</div>
+      <div style="font-size: 13.5px; line-height: 1.7; color: var(--text-dim);">No. It opens the change and votes on review; merging goes through the same branch protection and approvals as any human contributor.</div>
+    </div>
+    <div style="padding: 18px 0; border-top: 1px solid var(--border-soft);">
+      <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 7px;">What happens if a cycle crashes mid-run?</div>
+      <div style="font-size: 13.5px; line-height: 1.7; color: var(--text-dim);">SQLite runs in WAL mode and the state machine is persisted, so coding tasks resume at their last recorded state after a restart. AGENT_RUNNING restarts from scratch, since the sandbox is ephemeral.</div>
+    </div>
+    <div style="padding: 18px 0; border-top: 1px solid var(--border-soft);">
+      <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 7px;">How do we report a vulnerability?</div>
+      <div style="font-size: 13.5px; line-height: 1.7; color: var(--text-dim);">Privately, to contact@savoirfairelinux.com rather than a public issue. Reports are acknowledged within 48 hours and assessed within 7 days.</div>
+    </div>
+    <div style="padding: 18px 0; border-top: 1px solid var(--border-soft);">
+      <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 7px;">Can we run it fully self-hosted?</div>
+      <div style="font-size: 13.5px; line-height: 1.7; color: var(--text-dim);">Yes. The orchestrator, SQLite database, OpenShell gateway, and sandboxes all run on your infrastructure. Keep the Admin UI on loopback or behind a trusted reverse proxy.</div>
+    </div>
+  </div>
+
+  <div style="max-width: 1080px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 64px) 40px; text-align: center;">
+    <h2 style="font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.02em; font-weight: 600; margin: 0 0 14px;">Read the sandbox details.</h2>
+    <p style="font-size: 14.5px; color: var(--text-dim); margin: 0 0 24px;">The documentation covers the sandbox policy, the agent engines, and the review lifecycle.</p>
+    <a href="documentation.html#security" class="ve-btn-primary lg">Open the docs</a>
+  </div>
+
+  <div class="ve-page-footer is-compact">
+    <span style="font-size: 12.5px; color: var(--text-faint);">© 2026 Virtual Engineer</span>
+    <a href="index.html" style="font-size: 12.5px; color: var(--text-faint);">← Back to overview</a>
+  </div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

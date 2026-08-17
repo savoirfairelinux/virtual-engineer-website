@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand-virtual-engineer.png">
+<title>Virtual Engineer — Isolated, traceable AI engineering workflows</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="ve-blob-anchor b1"><div class="ve-blob-inner"></div></div>
+<div class="ve-blob-anchor b2"><div class="ve-blob-inner"></div></div>
+
+<nav class="ve-nav">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img class="ve-brand-logo" src="assets/brand-virtual-engineer.png" alt="" aria-hidden="true">
+    <span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em;">Virtual Engineer</span>
+  </div>
+  <div class="ve-nav-links">
+    <a href="#how" class="ve-nav-link" data-scroll-to="how" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">How it works</a>
+    <a href="documentation.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Docs</a>
+    <a href="integrations.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Integrations</a>
+    <a href="security.html" class="ve-nav-link" style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Security</a>
+  </div>
+  <div style="display: flex; align-items: center; gap: 16px;">
+    <a href="https://github.com/savoirfairelinux/virtual-engineer" target="_blank" rel="noopener" title="View source on GitHub" class="ve-gh-link">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+    </a>
+    <button class="ve-theme-toggle" type="button" aria-label="Switch to light theme">Light</button>
+    <button class="ve-magnet-btn hero" data-scroll-to="quickstart" style="font-size: 13px; padding: 9px 18px;">Get Started</button>
+  </div>
+</nav>
+<div class="ve-progress-track" aria-hidden="true"><div class="ve-progress-bar"></div></div>
+
+<!-- HERO -->
+<div style="position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: clamp(64px, 10vw, 110px) clamp(20px, 5vw, 64px) 0; text-align: center;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <h1 class="ve-headline" style="font-size: clamp(38px, 4.6vw, 60px); line-height: 1.14; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 20px; padding-bottom: 0.08em;">Isolated AI workflows<br>for tickets and code review.</h1>
+    <p style="font-size: 17px; line-height: 1.6; color: var(--text-dim); max-width: 520px; margin: 0 0 32px;">A self-hosted orchestrator that picks up assigned tickets, writes changes, opens reviews, answers feedback, and reviews incoming changes inside ephemeral OpenShell sandboxes.</p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+      <button class="ve-magnet-btn hero" data-scroll-to="quickstart">Get Started</button>
+      <button class="ve-btn-ghost" data-scroll-to="how">See how it works</button>
+    </div>
+    <div id="quickstart" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 40px; flex-wrap: wrap; scroll-margin-top: 100px;">
+      <code class="ve-code ve-install-command" style="padding: 9px 14px; white-space: nowrap;"><span style="color: var(--text-ghost);">$</span> curl -fsSL https://raw.githubusercontent.com/savoirfairelinux/virtual-engineer/main/scripts/install.sh | bash</code>
+      <a href="documentation.html#getting-started" style="font-size: 12.5px; color: var(--text-faint); border-bottom: 1px solid var(--border);">Quick start guide</a>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION CONTROL -->
+<div class="ve-reveal" style="position: relative; z-index: 1; max-width: 1180px; margin: 48px auto 0; padding: 0 clamp(20px, 5vw, 64px) 60px;">
+  <div class="ve-mission-grid">
+    <div style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="ve-eyebrow-row">Pipeline</span>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span class="ve-live-dot"></span>
+          <span style="font-size: 11px; color: var(--text-faint); font-family: var(--font-mono);">live</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="ve-row-card" data-pipeline-row>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
+            <div style="min-width: 0;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RM-4821 · normalize retry backoff</div>
+              <div style="font-size: 10.5px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">gitlab · payments-api</div>
+            </div>
+            <span class="ve-pill sm"></span>
+          </div>
+        </div>
+        <div class="ve-row-card" data-pipeline-row>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
+            <div style="min-width: 0;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">GH-1190 · add rate-limit headers</div>
+              <div style="font-size: 10.5px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">github · edge-gateway</div>
+            </div>
+            <span class="ve-pill sm"></span>
+          </div>
+        </div>
+        <div class="ve-row-card" data-pipeline-row>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
+            <div style="min-width: 0;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">GR-330 · fix flaky auth test</div>
+              <div style="font-size: 10.5px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">gerrit · identity-core</div>
+            </div>
+            <span class="ve-pill sm"></span>
+          </div>
+        </div>
+        <div class="ve-row-card" data-pipeline-row>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
+            <div style="min-width: 0;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">AZ-902 · rotate expiring token</div>
+              <div style="font-size: 10.5px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">copilot · billing-svc</div>
+            </div>
+            <span class="ve-pill sm"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ve-mission-mid">
+      <span class="ve-eyebrow-row">Agent log</span>
+      <div class="ve-mission-log">
+        <div class="ve-mission-log-track">
+          <span>$ git clone ssh://gerrit/identity-core</span>
+          <span>→ implementing fix for flaky auth test</span>
+          <span>✓ 3 files changed, 42 insertions(+)</span>
+          <span>$ git commit -m "fix: stabilize auth test timing"</span>
+          <span>→ pushing refs/for/main</span>
+          <span>✓ change created: I8a2f91d</span>
+          <span>→ waiting for review…</span>
+          <span>✓ review comment resolved</span>
+          <span>→ retry cycle 2 started</span>
+          <span>✓ change merged</span>
+          <span>$ git clone ssh://gerrit/identity-core</span>
+          <span>→ implementing fix for flaky auth test</span>
+          <span>✓ 3 files changed, 42 insertions(+)</span>
+          <span>$ git commit -m "fix: stabilize auth test timing"</span>
+          <span>→ pushing refs/for/main</span>
+          <span>✓ change created: I8a2f91d</span>
+          <span>→ waiting for review…</span>
+          <span>✓ review comment resolved</span>
+          <span>→ retry cycle 2 started</span>
+          <span>✓ change merged</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+      <span class="ve-eyebrow-row">Throughput</span>
+      <div class="ve-bars">
+        <span style="height: 19.7px;"></span>
+        <span style="height: 29.5px;"></span>
+        <span style="height: 24.6px;"></span>
+        <span style="height: 39.4px;"></span>
+        <span style="height: 34.5px;"></span>
+        <span style="height: 44.3px;"></span>
+        <span style="height: 39.4px;"></span>
+        <span style="height: 54.2px;"></span>
+        <span style="height: 44.3px;"></span>
+        <span style="height: 59.1px;"></span>
+        <span style="height: 49.2px;"></span>
+        <span style="height: 64px;"></span>
+      </div>
+      <span class="ve-tag">healthy</span>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+        <div class="ve-row-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
+            <span style="font-size: 11.5px; color: var(--text-dim);">GR-330 · identity-core</span>
+            <span class="ve-pill sm tone-ok"><span class="dot"></span>MERGED</span>
+          </div>
+        </div>
+        <div class="ve-row-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
+            <span style="font-size: 11.5px; color: var(--text-dim);">RM-4790 · jobs-worker</span>
+            <span class="ve-pill sm tone-ok"><span class="dot"></span>DONE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STACK STRIP -->
+<div id="stack" class="ve-stack-strip">
+  <div class="ve-marquee-track">
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"/></svg></span>GitHub</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FC6D26" d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z"/></svg></span>GitLab</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-white" src="assets/brand-gerrit.svg" alt="" aria-hidden="true"></span>Gerrit</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><svg fill="#B32024" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m1.092 15.088c.789.243 4.098 1.005 4.098 1.005.198.061.139.21.139.21-.228 1.798-.178 3.17-.178 3.644 0 .21-.153.18-.153.18h-4.83c-.209 0-.164-.19-.164-.19.04-.599.212-2.303.878-4.746 0 0 .033-.157.21-.103zm21.816 0c-.789.243-4.098 1.005-4.098 1.005-.198.061-.139.21-.139.21.228 1.798.178 3.17.178 3.644 0 .21.153.18.153.18h4.83c.21 0 .164-.19.164-.19-.04-.599-.212-2.303-.878-4.746 0 0-.034-.157-.21-.103zm-1.929-5.354-3.448 1.667c-.164.063-.082.212-.082.212.476 1.134.766 2.091.99 3.251.038.194.169.132.169.132l3.879-1.684s.116-.044.068-.193c-.172-.531-1.05-2.649-1.402-3.341 0 0-.062-.105-.174-.044zm-17.958 0 3.448 1.667c.164.063.082.212.082.212-.476 1.134-.766 2.091-.991 3.251-.037.194-.169.132-.169.132l-3.878-1.684s-.116-.044-.068-.193c.172-.531 1.05-2.649 1.402-3.341 0 0 .062-.105.174-.044zm4.085-4.368 2.302 2.681c.099.128-.032.222-.032.222-.923.498-1.59 1.25-2.161 2.111-.114.17-.236.046-.236.046l-2.917-2.184s-.126-.074-.016-.22c.854-1.134 1.63-1.934 2.871-2.689 0 0 .094-.089.189.033zm9.788 0-2.302 2.681c-.099.128.032.222.032.222.923.498 1.59 1.25 2.161 2.111.114.17.236.046.236.046l2.917-2.184s.126-.074.016-.22c-.854-1.134-1.63-1.934-2.871-2.689 0 0-.094-.089-.189.033zm-4.894 2.295c.388 0 1.105.037 1.444.093.177.03.221-.088.221-.088l1.449-3.028s.097-.114-.106-.188c-1.082-.396-1.657-.578-3.008-.578-1.35 0-1.926.182-3.008.578-.203.074-.106.188-.106.188l1.449 3.028s.044.118.221.088c.339-.056 1.056-.093 1.444-.093z"/></svg></span>Redmine</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-white" src="assets/brand-copilot.svg" alt="" aria-hidden="true"></span>Copilot</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img src="assets/brand-claude.svg" alt="" aria-hidden="true"></span>Claude Code</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img src="assets/brand-aider.svg" alt="" aria-hidden="true"></span>Aider</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-light" src="assets/brand-goose.svg" alt="" aria-hidden="true"></span>Goose</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-light" src="assets/brand-codex.svg" alt="" aria-hidden="true"></span>Codex</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img src="assets/brand-gemini.svg" alt="" aria-hidden="true"></span>Gemini CLI</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-light" src="assets/brand-opencode.svg" alt="" aria-hidden="true"></span>OpenCode</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-white" src="assets/brand-cursor.svg" alt="" aria-hidden="true"></span>Cursor</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"/></svg></span>GitHub</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FC6D26" d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z"/></svg></span>GitLab</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-white" src="assets/brand-gerrit.svg" alt="" aria-hidden="true"></span>Gerrit</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><svg fill="#B32024" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m1.092 15.088c.789.243 4.098 1.005 4.098 1.005.198.061.139.21.139.21-.228 1.798-.178 3.17-.178 3.644 0 .21-.153.18-.153.18h-4.83c-.209 0-.164-.19-.164-.19.04-.599.212-2.303.878-4.746 0 0 .033-.157.21-.103zm21.816 0c-.789.243-4.098 1.005-4.098 1.005-.198.061-.139.21-.139.21.228 1.798.178 3.17.178 3.644 0 .21.153.18.153.18h4.83c.21 0 .164-.19.164-.19-.04-.599-.212-2.303-.878-4.746 0 0-.034-.157-.21-.103zm-1.929-5.354-3.448 1.667c-.164.063-.082.212-.082.212.476 1.134.766 2.091.99 3.251.038.194.169.132.169.132l3.879-1.684s.116-.044.068-.193c-.172-.531-1.05-2.649-1.402-3.341 0 0-.062-.105-.174-.044zm-17.958 0 3.448 1.667c.164.063.082.212.082.212-.476 1.134-.766 2.091-.991 3.251-.037.194-.169.132-.169.132l-3.878-1.684s-.116-.044-.068-.193c.172-.531 1.05-2.649 1.402-3.341 0 0 .062-.105.174-.044zm4.085-4.368 2.302 2.681c.099.128-.032.222-.032.222-.923.498-1.59 1.25-2.161 2.111-.114.17-.236.046-.236.046l-2.917-2.184s-.126-.074-.016-.22c.854-1.134 1.63-1.934 2.871-2.689 0 0 .094-.089.189.033zm9.788 0-2.302 2.681c-.099.128.032.222.032.222.923.498 1.59 1.25 2.161 2.111.114.17.236.046.236.046l2.917-2.184s.126-.074.016-.22c-.854-1.134-1.63-1.934-2.871-2.689 0 0-.094-.089-.189.033zm-4.894 2.295c.388 0 1.105.037 1.444.093.177.03.221-.088.221-.088l1.449-3.028s.097-.114-.106-.188c-1.082-.396-1.657-.578-3.008-.578-1.35 0-1.926.182-3.008.578-.203.074-.106.188-.106.188l1.449 3.028s.044.118.221.088c.339-.056 1.056-.093 1.444-.093z"/></svg></span>Redmine</span>
+    <span class="ve-marquee-item"><span class="ve-provider-glyph"><img class="is-white" src="assets/brand-copilot.svg" alt="" aria-hidden="true"></span>Copilot</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" class="ve-reveal" style="position: relative; z-index: 1;">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 100px clamp(20px, 5vw, 64px) 40px;">
+    <div style="max-width: 560px; margin-bottom: 56px;">
+      <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--info);">How it works</span>
+      <h2 style="font-size: clamp(28px, 3vw, 38px); letter-spacing: -0.02em; font-weight: 600; margin: 12px 0 0;">From ticket to merged, unattended.</h2>
+    </div>
+    <div class="ve-how-grid">
+      <div class="ve-how-line"></div>
+      <div class="ve-how-card">
+        <div class="ve-step-circle">01</div>
+        <div style="font-size: 15px; font-weight: 600;">Detect</div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Watches Redmine, GitLab, and GitHub Issues for tickets assigned to it.</div>
+      </div>
+      <div class="ve-how-card">
+        <div class="ve-step-circle">02</div>
+        <div style="font-size: 15px; font-weight: 600;">Build</div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Clones the repo host-side, uploads the workspace into an ephemeral sandbox, and runs the agent there.</div>
+      </div>
+      <div class="ve-how-card">
+        <div class="ve-step-circle">03</div>
+        <div style="font-size: 15px; font-weight: 600;">Review</div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Opens the change and answers reviewer feedback with follow-up commits, automatically.</div>
+      </div>
+      <div class="ve-how-card">
+        <div class="ve-step-circle">04</div>
+        <div style="font-size: 15px; font-weight: 600;">Ship</div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Once merged, the task closes itself out. No status meeting required.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div id="features" class="ve-reveal" style="position: relative; z-index: 1;">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 60px clamp(20px, 5vw, 64px);">
+    <div style="max-width: 560px; margin-bottom: 44px;">
+      <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--info);">Product</span>
+      <h2 style="font-size: clamp(28px, 3vw, 38px); letter-spacing: -0.02em; font-weight: 600; margin: 12px 0 0;">Built for real engineering workflows.</h2>
+    </div>
+    <div class="ve-grid-3" style="gap: 16px;">
+      <div class="ve-feature-tile">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <div class="ve-feature-icon" style="background: var(--info-soft);">⇄</div>
+          <div style="font-size: 15px; font-weight: 600;">Eight agent engines</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Copilot, Claude Code, Aider, Goose, Codex, Gemini CLI, OpenCode, or Cursor — the workflow stays the same.</div>
+      </div>
+      <div class="ve-feature-tile">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <div class="ve-feature-icon" style="background: var(--accent-soft);">◎</div>
+          <div style="font-size: 15px; font-weight: 600;">Review agent, too</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">A second workflow reviews incoming patchsets: fetches the diff, posts inline comments, and casts a vote.</div>
+      </div>
+      <div class="ve-feature-tile">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <div class="ve-feature-icon" style="background: var(--ok-soft);">⛊</div>
+          <div style="font-size: 15px; font-weight: 600;">OpenShell sandbox by design</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Every cycle runs in an ephemeral OpenShell sandbox under deny-by-default runtime policies. Push credentials stay host-side.</div>
+      </div>
+      <div class="ve-feature-tile">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <div class="ve-feature-icon" style="background: var(--info-soft);">↻</div>
+          <div style="font-size: 15px; font-weight: 600;">Feedback loops</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Understands reviewer comments and retries with the fix, no re-briefing needed.</div>
+      </div>
+      <div class="ve-feature-tile">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <div class="ve-feature-icon" style="background: var(--accent-soft);">▤</div>
+          <div style="font-size: 15px; font-weight: 600;">Full audit trail</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">Every state transition lands in the state_transitions table, alongside model usage and AI cost.</div>
+      </div>
+      <div class="ve-feature-tile">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+          <div class="ve-feature-icon" style="background: var(--warn-soft);">◒</div>
+          <div style="font-size: 15px; font-weight: 600;">Self-hosted</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.55; color: var(--text-dim);">A TypeScript orchestrator plus SQLite on your own infrastructure. Provider credentials are encrypted at rest.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE FEED SHOWCASE -->
+<div id="feed" class="ve-reveal">
+  <div class="ve-feed-grid">
+    <div>
+      <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--info);">Always on</span>
+      <h2 style="font-size: clamp(26px, 2.8vw, 34px); letter-spacing: -0.02em; font-weight: 600; margin: 12px 0 16px;">Watch every cycle, in real time.</h2>
+      <p style="font-size: 14.5px; line-height: 1.6; color: var(--text-dim); margin: 0 0 20px;">Every state transition, retry, and review comment streams live — so you always know exactly what the agent is doing and why.</p>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div>
+          <div class="metric-val" style="font-size: 26px; font-weight: 600; color: var(--text); font-family: var(--font-mono);"><span data-provider-count>0</span></div>
+          <div style="font-size: 11.5px; color: var(--text-faint); margin-top: 2px;">providers supported</div>
+        </div>
+      </div>
+    </div>
+    <div class="ve-feed-panel">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="ve-eyebrow-row">Cycle throughput</span>
+        <span class="ve-tag">healthy</span>
+      </div>
+      <div class="ve-bars">
+        <span style="height: 19.7px;"></span>
+        <span style="height: 29.5px;"></span>
+        <span style="height: 24.6px;"></span>
+        <span style="height: 39.4px;"></span>
+        <span style="height: 34.5px;"></span>
+        <span style="height: 44.3px;"></span>
+        <span style="height: 39.4px;"></span>
+        <span style="height: 54.2px;"></span>
+        <span style="height: 44.3px;"></span>
+        <span style="height: 59.1px;"></span>
+        <span style="height: 49.2px;"></span>
+        <span style="height: 64px;"></span>
+      </div>
+      <div style="height: 1px; background: var(--border-soft); margin: 4px 0;"></div>
+      <div class="ve-row-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;">
+          <div style="min-width: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RM-4821 · normalize retry backoff</div>
+            <div style="font-size: 11px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">gitlab · payments-api</div>
+          </div>
+          <span class="ve-pill sm tone-active"><span class="dot live"></span>AGENT_RUNNING</span>
+        </div>
+      </div>
+      <div class="ve-row-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;">
+          <div style="min-width: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">GH-1190 · add rate-limit headers</div>
+            <div style="font-size: 11px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">github · edge-gateway</div>
+          </div>
+          <span class="ve-pill sm tone-warn"><span class="dot"></span>IN_REVIEW</span>
+        </div>
+      </div>
+      <div class="ve-row-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;">
+          <div style="min-width: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">GR-330 · fix flaky auth test</div>
+            <div style="font-size: 11px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">gerrit · identity-core</div>
+          </div>
+          <span class="ve-pill sm tone-active"><span class="dot live"></span>FEEDBACK_PROCESSING</span>
+        </div>
+      </div>
+      <div class="ve-row-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;">
+          <div style="min-width: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RM-4790 · migrate queue driver</div>
+            <div style="font-size: 11px; color: var(--text-faint); font-family: var(--font-mono); margin-top: 2px;">redmine · jobs-worker</div>
+          </div>
+          <span class="ve-pill sm tone-ok"><span class="dot"></span>MERGED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div id="trust" class="ve-reveal" style="position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 100px clamp(20px, 5vw, 64px) 60px;">
+  <div style="max-width: 560px; margin-bottom: 44px;">
+    <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--info);">Security</span>
+    <h2 style="font-size: clamp(28px, 3vw, 38px); letter-spacing: -0.02em; font-weight: 600; margin: 12px 0 0;">Autonomous doesn't mean unsupervised.</h2>
+  </div>
+  <div class="ve-grid-3" style="gap: 20px;">
+    <div class="ve-trust-card">
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text);">Ephemeral OpenShell sandboxes</div>
+      <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Each cycle gets a deny-by-default OpenShell policy; only declared egress is opened, and provider push credentials remain on the host.</div>
+    </div>
+    <div class="ve-trust-card">
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text);">Full audit trail</div>
+      <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Every state transition, retry, and comment is recorded — nothing happens off the record.</div>
+    </div>
+    <div class="ve-trust-card">
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text);">You stay in control</div>
+      <div style="font-size: 13px; line-height: 1.6; color: var(--text-dim);">Pause, resume, or abandon any task at any time. Nothing merges without your review process.</div>
+    </div>
+  </div>
+  <div style="margin-top: 28px;">
+    <a href="security.html" style="font-size: 13px; color: var(--text-faint); border-bottom: 1px solid var(--border);">Read the full security page →</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div id="try-cta" class="ve-reveal">
+  <div style="position: relative; z-index: 1; max-width: 1180px; margin: 20px auto 0; padding: 72px clamp(20px, 5vw, 64px); text-align: center; border-top: 1px solid var(--border-soft);">
+    <h2 style="font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.02em; font-weight: 600; margin: 0 0 16px;">Let it take the next ticket.</h2>
+    <p style="font-size: 15px; color: var(--text-dim); margin: 0 0 28px;">Point Virtual Engineer at a project and see the first change land.</p>
+    <button class="ve-magnet-btn cta" data-scroll-to="quickstart">Get Started</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 40px clamp(20px, 5vw, 64px) 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-soft); flex-wrap: wrap; gap: 16px;">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img class="ve-brand-logo sm" src="assets/brand-virtual-engineer.png" alt="" aria-hidden="true">
+    <span style="font-size: 12.5px; color: var(--text-faint);">© 2026 Virtual Engineer</span>
+  </div>
+  <div class="ve-footer-links">
+    <a href="#how" data-scroll-to="how" style="font-size: 12.5px; color: var(--text-faint);">How it works</a>
+    <a href="documentation.html" style="font-size: 12.5px; color: var(--text-faint);">Docs</a>
+    <a href="integrations.html" style="font-size: 12.5px; color: var(--text-faint);">Integrations</a>
+    <a href="security.html" style="font-size: 12.5px; color: var(--text-faint);">Security</a>
+    <a href="https://github.com/savoirfairelinux/virtual-engineer" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-faint);">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+      GitHub
+    </a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

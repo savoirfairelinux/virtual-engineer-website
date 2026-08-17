@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-labelledby="title desc">
+  <title id="title">Virtual Engineer</title>
+  <desc id="desc">A linked V and E mark representing an automated engineering workflow.</desc>
+  <rect width="40" height="40" rx="11" fill="#12243a"/>
+  <path d="M9 11.5 15.6 28h3.1l3.1-7.7" fill="none" stroke="#67c6ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"/>
+  <path d="M21.8 11.5h5.7c2.5 0 4.5 2 4.5 4.5s-2 4.5-4.5 4.5h-5.7m0 0h6.2c2.6 0 4.7 2.1 4.7 4.7s-2.1 4.7-4.7 4.7h-6.2V11.5" fill="none" stroke="#91e6c0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+</svg>
