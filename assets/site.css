@@ -137,28 +137,31 @@ body { overflow-x: hidden; }
   padding: 20px; backdrop-filter: blur(6px);
   display: grid; gap: 18px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
+  align-items: stretch;
 }
-@media (max-width: 1039px) { .ve-mission-grid { grid-template-columns: 1fr; } }
+@media (max-width: 679px) { .ve-mission-grid { grid-template-columns: 1fr; } }
 
 .ve-mission-mid {
-  position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; align-self: start;
+  position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; align-self: stretch;
   border-left: 1px solid var(--border-soft); border-right: 1px solid var(--border-soft);
   padding: 0 18px;
 }
-@media (max-width: 1039px) {
+@media (max-width: 679px) {
   .ve-mission-mid {
-    min-height: 150px; border-left: none; border-right: none;
+    min-height: 150px; height: auto; align-self: start; border-left: none; border-right: none;
     border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);
     padding: 16px 0;
   }
 }
 .ve-mission-log {
-  flex: none; height: 156px; overflow: hidden;
+  flex: 1 1 0; min-height: 0; overflow: hidden;
   border-radius: var(--radius-sm); background: color-mix(in oklab, var(--bg) 60%, transparent);
   border: 1px solid var(--border-soft);
   -webkit-mask-image: linear-gradient(180deg, transparent, black 12%, black 88%, transparent);
   mask-image: linear-gradient(180deg, transparent, black 12%, black 88%, transparent);
+}
+@media (max-width: 679px) {
+  .ve-mission-log { flex: none; height: 156px; }
 }
 .ve-mission-log-track {
   animation: marquee-y 14s linear infinite;
