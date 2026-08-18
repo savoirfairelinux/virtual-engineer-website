@@ -197,7 +197,7 @@ a:hover { color: var(--accent-strong); }
   padding: 22px;
   transition: all 0.2s var(--ease);
 }
-.ve-feature-card:hover { border-color: var(--info); box-shadow: 0 0 24px -8px var(--info-soft); }
+.ve-feature-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
 
 /* ---- tag ---- */
 .ve-tag {

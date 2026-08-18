@@ -39,6 +39,54 @@
     });
   });
 
+  // ---- copy install command ----
+  document.querySelectorAll('[data-copy-target]').forEach((button) => {
+    const target = document.getElementById(button.getAttribute('data-copy-target'));
+    if (!target) return;
+    const copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>';
+    const checkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"></path></svg>';
+    const errorIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>';
+    let resetTimer;
+
+    async function copyCommand(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      const fallback = document.createElement('textarea');
+      fallback.value = text;
+      fallback.setAttribute('readonly', '');
+      fallback.style.position = 'fixed';
+      fallback.style.opacity = '0';
+      document.body.appendChild(fallback);
+      fallback.select();
+      const copied = document.execCommand('copy');
+      fallback.remove();
+      if (!copied) throw new Error('Clipboard copy failed');
+    }
+
+    function setCopyState(state, label, icon) {
+      clearTimeout(resetTimer);
+      button.classList.toggle('is-copied', state === 'copied');
+      button.setAttribute('aria-label', label);
+      button.setAttribute('title', label);
+      button.innerHTML = icon;
+      if (state !== 'ready') {
+        resetTimer = setTimeout(() => setCopyState('ready', 'Copy install command', copyIcon), 1800);
+      }
+    }
+
+    button.addEventListener('click', async () => {
+      const text = target.dataset.copyValue || target.textContent.trim().replace(/^\$\s*/, '');
+      try {
+        await copyCommand(text);
+        setCopyState('copied', 'Copied', checkIcon);
+      } catch {
+        setCopyState('error', 'Copy failed', errorIcon);
+      }
+    });
+  });
+
   const marqueeTrack = document.querySelector('.ve-marquee-track[data-marquee-group-size]');
   if (marqueeTrack) {
     const groupSize = Number(marqueeTrack.dataset.marqueeGroupSize);
@@ -77,13 +125,21 @@
   // ---- blob parallax ----
   const blob1 = document.querySelector('.ve-blob-anchor.b1');
   const blob2 = document.querySelector('.ve-blob-anchor.b2');
-  function onBlobScroll() {
+  function onAmbientScroll() {
     const y = window.scrollY || 0;
+    if (prefersReducedMotion.matches) {
+      if (blob1) blob1.style.transform = '';
+      if (blob2) blob2.style.transform = '';
+      return;
+    }
     if (blob1) blob1.style.transform = `translateY(${y * 0.12}px)`;
     if (blob2) blob2.style.transform = `translateY(${-y * 0.08}px)`;
   }
-  window.addEventListener('scroll', onBlobScroll, { passive: true });
-  onBlobScroll();
+  window.addEventListener('scroll', onAmbientScroll, { passive: true });
+  if (typeof prefersReducedMotion.addEventListener === 'function') {
+    prefersReducedMotion.addEventListener('change', onAmbientScroll);
+  }
+  onAmbientScroll();
 
   // ---- scroll reveal ----
   const revealObserver = new IntersectionObserver((entries) => {
@@ -162,34 +218,4 @@
     if (!prefersReducedMotion.matches) setInterval(tickPipeline, 3200);
   }
 
-  // ---- provider count-up when feed section becomes visible ----
-  const feedSection = document.getElementById('feed');
-  const providerCountEl = document.querySelector('[data-provider-count]');
-  let countedUp = false;
-  function runCountUp() {
-    if (prefersReducedMotion.matches) {
-      if (providerCountEl) providerCountEl.textContent = '4';
-      return;
-    }
-    const start = Date.now();
-    const dur = 900;
-    const timer = setInterval(() => {
-      const p = Math.min(1, (Date.now() - start) / dur);
-      const eased = 1 - Math.pow(1 - p, 3);
-      if (providerCountEl) providerCountEl.textContent = Math.round(eased * 4);
-      if (p >= 1) clearInterval(timer);
-    }, 30);
-  }
-  if (feedSection) {
-    const feedObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !countedUp) {
-          countedUp = true;
-          runCountUp();
-          feedObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.55 });
-    feedObserver.observe(feedSection);
-  }
 })();
