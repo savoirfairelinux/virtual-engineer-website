@@ -9,8 +9,10 @@
   function updateThemeToggle() {
     if (!themeToggle) return;
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    themeToggle.textContent = isLight ? 'Dark' : 'Light';
-    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+    const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+    themeToggle.dataset.themeState = isLight ? 'light' : 'dark';
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
     themeToggle.setAttribute('aria-pressed', String(isLight));
   }
   if (themeToggle) {

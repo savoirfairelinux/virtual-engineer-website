@@ -36,10 +36,13 @@
   border-bottom: 1px solid var(--border-soft);
 }
 .ve-docs-topbar {
-  display: flex; align-items: center; justify-content: space-between;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center;
   flex-wrap: wrap; row-gap: 10px; column-gap: 16px;
   padding: 14px clamp(20px, 5vw, 64px);
 }
+.ve-docs-topbar > .ve-brand-lockup { grid-column: 1; justify-self: start; }
+.ve-docs-topbar > .ve-nav-menu { grid-column: 2; }
+.ve-docs-topbar > :last-child { grid-column: 3; justify-self: end; }
 .ve-docs-tabs { display: flex; gap: 2px; overflow-x: auto; padding: 0 clamp(16px, 5vw, 60px) 8px; }
 
 .ve-docs-layout {
@@ -47,7 +50,7 @@
   display: flex; flex-wrap: wrap; gap: 44px; align-items: flex-start;
 }
 .ve-docs-sidebar {
-  position: sticky; top: 112px; flex: 1 1 190px; max-width: 236px;
+  position: sticky; top: 126px; flex: 1 1 190px; max-width: 236px;
   display: flex; flex-direction: column; gap: 2px;
 }
 .ve-docs-sidebar-label {
