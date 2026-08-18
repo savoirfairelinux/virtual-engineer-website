@@ -1,6 +1,7 @@
 (() => {
   'use strict';
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const themeToggle = document.querySelector('.ve-theme-toggle');
   let savedTheme = null;
   try { savedTheme = window.localStorage.getItem('ve-theme'); } catch {}
@@ -26,11 +27,28 @@
   // ---- smooth scroll for "Get Started" / "See how it works" ----
   document.querySelectorAll('[data-scroll-to]').forEach((el) => {
     el.addEventListener('click', (e) => {
-      e.preventDefault();
       const target = document.getElementById(el.getAttribute('data-scroll-to'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+        block: 'start'
+      });
     });
   });
+
+  const marqueeTrack = document.querySelector('.ve-marquee-track[data-marquee-group-size]');
+  if (marqueeTrack) {
+    const groupSize = Number(marqueeTrack.dataset.marqueeGroupSize);
+    const items = Array.from(marqueeTrack.children);
+    if (groupSize > 0 && items.length >= groupSize) {
+      const group = items.slice(0, groupSize);
+      marqueeTrack.replaceChildren(
+        ...group,
+        ...group.map((item) => item.cloneNode(true))
+      );
+    }
+  }
 
   // ---- nav solidify + scroll progress bar ----
   const nav = document.querySelector('.ve-nav');
@@ -139,7 +157,7 @@
   }
   if (pipelineRows.length) {
     tickPipeline();
-    setInterval(tickPipeline, 3200);
+    if (!prefersReducedMotion.matches) setInterval(tickPipeline, 3200);
   }
 
   // ---- provider count-up when feed section becomes visible ----
@@ -147,6 +165,10 @@
   const providerCountEl = document.querySelector('[data-provider-count]');
   let countedUp = false;
   function runCountUp() {
+    if (prefersReducedMotion.matches) {
+      if (providerCountEl) providerCountEl.textContent = '4';
+      return;
+    }
     const start = Date.now();
     const dur = 900;
     const timer = setInterval(() => {

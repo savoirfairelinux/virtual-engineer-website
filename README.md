@@ -1,7 +1,7 @@
 # Virtual Engineer Website
 
 Static site (plain HTML/CSS/JS, no build step) published via GitHub Pages at
-https://savoirfairelinux.github.io/virtual-engineer-website/
+https://virtual-engineer.dev/
 
 ## Structure
 
@@ -9,6 +9,8 @@ https://savoirfairelinux.github.io/virtual-engineer-website/
 - `documentation.html` — documentation page
 - `integrations.html` — integrations page
 - `security.html` — security page
+- `robots.txt` and `sitemap.xml` — crawler discovery
+- `favicon.ico` — site favicon
 - `assets/` — stylesheets, scripts, and images shared across pages
 
 ## Developing locally
@@ -29,3 +31,5 @@ loading over `file://`.
 ## Deploying
 
 Pushes to `main` are published automatically to GitHub Pages.
+
+The custom domain should have GitHub Pages' **Enforce HTTPS** setting enabled.

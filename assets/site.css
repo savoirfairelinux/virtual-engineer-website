@@ -2,6 +2,15 @@
 
 body { overflow-x: hidden; }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#how,
+#quickstart {
+  scroll-margin-top: 220px;
+}
+
 @keyframes blob-float {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(3%, -4%) scale(1.06); }
@@ -85,10 +94,19 @@ body { overflow-x: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ve-progress-bar { transition: none; }
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
 }
 
 .ve-gh-link { transform-origin: center; }
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--info);
+  outline-offset: 3px;
+}
 
 .ve-magnet-btn {
   font-family: var(--font-sans);
@@ -324,7 +342,11 @@ body { overflow-x: hidden; }
 .ve-feed-panel {
   background: var(--panel); border: 1px solid var(--border-soft); border-radius: var(--radius-lg);
   box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 10px;
+  min-width: 0;
 }
+.ve-feed-grid > * { min-width: 0; }
+.ve-feed-panel .ve-row-card,
+.ve-feed-panel .ve-row-card > div { min-width: 0; }
 
 /* ---- footer ---- */
 .ve-footer-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
