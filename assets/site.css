@@ -53,7 +53,7 @@ html {
 
 /* ---- homepage hero ---- */
 .ve-hero {
-  position: relative; z-index: 1; max-width: 860px; margin: 0 auto;
+  position: relative; z-index: 1; max-width: 1000px; margin: 0 auto;
   padding: clamp(44px, 6vw, 72px) clamp(20px, 5vw, 64px) 0;
   text-align: center;
 }
@@ -125,7 +125,7 @@ html {
 .ve-install-command-bar {
   display: flex;
   align-items: stretch;
-  width: min(100%, 780px);
+  width: min(100%, 520px);
   max-width: 100%;
   min-width: 0;
   overflow: hidden;
