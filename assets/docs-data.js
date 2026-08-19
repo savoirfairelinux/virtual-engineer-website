@@ -251,7 +251,7 @@
 
   const PAGE_CONTENT = {
     home: () => `
-      <span class="ve-code">curl -fsSL https://raw.githubusercontent.com/savoirfairelinux/virtual-engineer/main/scripts/install.sh | bash</span>
+      <span class="ve-code">curl -fsSL https://virtual-engineer.dev/install.sh | bash</span>
       <p>The installer creates <span class="ve-m">.env</span>, generates <span class="ve-m">ADMIN_AUTH_SECRET</span>, builds the images, starts the OpenShell gateway, and launches the orchestrator. Then open <span class="ve-m">http://127.0.0.1:3100/admin</span> and create the first admin account.</p>
       <h2>Read the docs by audience</h2>
       <ul>
@@ -272,7 +272,7 @@
       <p>One agent-engine credential, and access to whichever ticket tracker, source-control, and review systems the project should use. Everything else is configured later from the Admin UI.</p>`,
 
     install: () => `
-      <span class="ve-code">curl -fsSL https://raw.githubusercontent.com/savoirfairelinux/virtual-engineer/main/scripts/install.sh | bash</span>
+      <span class="ve-code">curl -fsSL https://virtual-engineer.dev/install.sh | bash</span>
       <p>The script clones the repository, writes <span class="ve-m">.env</span>, generates <span class="ve-m">ADMIN_AUTH_SECRET</span>, builds the agent and orchestrator images, starts local Keycloak when needed, starts the pinned OpenShell gateway, and launches the orchestrator.</p>
       <h2>Pinned and reviewable installs</h2>
       ${tbl([
