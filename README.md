@@ -12,7 +12,7 @@ https://virtual-engineer.dev/
 - `about.html` — about page
 - `404.html` — not-found page, served by GitHub Pages for unknown paths
 - `robots.txt` and `sitemap.xml` — crawler discovery
-- `favicon.ico` and `favicon.svg` — site favicon
+- `favicon.ico` — site favicon
 - `assets/` — stylesheets, scripts, and images shared across pages
 
 ### Agent-readable resources

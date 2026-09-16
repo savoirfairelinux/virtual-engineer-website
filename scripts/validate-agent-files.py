@@ -5,7 +5,7 @@ Checks (no third-party dependencies):
   - XML files parse
   - JSON-LD blocks in HTML parse and expose the expected @type values
   - llms.txt / llms-full.txt structure requirements
-  - every page links the llms/feed alternates and the SVG favicon
+  - every page links the llms/feed alternates and the favicon
   - referenced local files exist
 """
 
@@ -104,10 +104,10 @@ for name in PAGES:
     check(f'href="{base}/llms.txt"' in document or f'href="{base}llms.txt"' in document, f"{name} links llms.txt")
     check(f'{base}/llms-full.txt' in document or f'{base}llms-full.txt' in document, f"{name} links llms-full.txt")
     check("application/rss+xml" in document, f"{name} links the RSS feed")
-    check('type="image/svg+xml"' in document, f"{name} declares an SVG favicon")
+    check(f'href="{base}/favicon.ico"' in document or f'href="{base}favicon.ico"' in document, f"{name} declares the favicon")
 
 print("== Referenced local files exist ==")
-for name in ["favicon.svg", "favicon.ico", "llms.txt", "llms-full.txt", "agents.txt", "feed.xml"]:
+for name in ["favicon.ico", "llms.txt", "llms-full.txt", "agents.txt", "feed.xml"]:
     check(os.path.exists(os.path.join(ROOT, name)), f"{name} exists")
 
 print("== agents.txt ==")
