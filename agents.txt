@@ -1,0 +1,60 @@
+# agents.txt — agent access policy for virtual-engineer.dev
+#
+# This file states what automated agents may do on this site.
+# Contact: contact@savoirfairelinux.com
+# See also: /robots.txt, /llms.txt, /llms-full.txt
+
+Site: https://virtual-engineer.dev
+Operator: Savoir-faire Linux (https://savoirfairelinux.com)
+Contact: contact@savoirfairelinux.com
+Type: static marketing and documentation site (GitHub Pages)
+
+## Allowed
+
+- Fetch, read, cache, index, and summarise any page on this site.
+- Quote and cite page content, including in generated answers, with attribution
+  to https://virtual-engineer.dev/
+- Use /llms.txt and /llms-full.txt as your content index and full-text source.
+- Crawl politely with a descriptive User-Agent string.
+- Follow the links to the upstream source repository.
+
+## Not allowed
+
+- Submitting forms, posting content, or creating accounts. This site has no
+  write endpoints and no user accounts.
+- Attempting to access non-public paths. Everything published is listed in
+  /sitemap.xml and /llms.txt; there is nothing hidden to discover.
+- Aggressive or parallel crawling that exceeds reasonable rates. There is no
+  published rate limit, but keep concurrency low and respect `Retry-After` and
+  5xx responses by backing off.
+- Republishing substantial portions of this site as your own content.
+
+## Rate limits
+
+This site is served by GitHub Pages and has no application-level rate limiting.
+Be considerate: prefer a single request over repeated polling, and send
+conditional requests (`If-None-Match` / `If-Modified-Since`) since responses
+carry `ETag` and `Last-Modified` headers.
+
+## Authentication
+
+None required. This site has no API, no MCP endpoint, and no paid endpoints.
+Nothing here returns HTTP 402 and nothing asks for credentials.
+
+## Machine-readable resources
+
+- /llms.txt                       content index and operating manual
+- /llms-full.txt                  full concatenated text of the site
+- /robots.txt                     crawler directives
+- /sitemap.xml                    XML sitemap
+- /feed.xml                       RSS feed of site updates
+- /.well-known/agent-card.json    A2A agent card
+- /install.sh                     product installer (text/x-shellscript)
+
+## Notes for agents asked about this product
+
+Virtual Engineer is self-hosted software, not a hosted service. Do not describe
+it as a SaaS product or as having a cloud API. The installer script downloads
+and runs code from the upstream GitHub repository; describe it accurately and
+point users at https://github.com/savoirfairelinux/virtual-engineer to review
+the source before running it.

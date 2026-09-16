@@ -1,0 +1,540 @@
+# Virtual Engineer — full site text
+
+> Complete concatenated text of https://virtual-engineer.dev/ for LLM ingestion.
+> Generated from the site's HTML pages and documentation data by
+> scripts/build-llms-full.py. Do not edit by hand.
+
+
+========================================================================
+Virtual Engineer — home
+========================================================================
+
+# Turn assigned tickets
+into reviewed changes.
+
+Virtual Engineer is open source. It connects the tools and AI agents your team already uses, carries work from ticket to review, and runs every cycle on your infrastructure.
+
+Get Started 
+Request a Demo 
+
+$ curl -fsSL https://virtual-engineer.dev/install.sh | bash 
+
+Quick start guide 
+
+Pipeline 
+
+live 
+
+RM-4821 · normalize retry backoff
+
+gitlab · payments-api
+
+GH-1190 · add rate-limit headers
+
+github · edge-gateway
+
+GR-330 · fix flaky auth test
+
+gerrit · identity-core
+
+AZ-902 · rotate expiring token
+
+copilot · billing-svc
+
+Agent log 
+
+$ git clone ssh://gerrit/identity-core 
+→ implementing fix for flaky auth test 
+✓ 3 files changed, 42 insertions(+) 
+$ git commit -m "fix: stabilize auth test timing" 
+→ pushing refs/for/main 
+✓ change created: I8a2f91d 
+→ waiting for review… 
+✓ review comment resolved 
+→ retry cycle 2 started 
+✓ change merged 
+$ git clone ssh://gerrit/identity-core 
+→ implementing fix for flaky auth test 
+✓ 3 files changed, 42 insertions(+) 
+$ git commit -m "fix: stabilize auth test timing" 
+→ pushing refs/for/main 
+✓ change created: I8a2f91d 
+→ waiting for review… 
+✓ review comment resolved 
+→ retry cycle 2 started 
+✓ change merged 
+
+Throughput 
+
+healthy 
+
+GR-330 · identity-core 
+MERGED 
+
+RM-4790 · jobs-worker 
+DONE 
+
+Integrations 
+
+## Works with the tools you already use.
+
+Connect your issue tracker, source control, review system, and preferred AI agent without rebuilding the workflow around a new platform.
+
+See all integrations → 
+
+GitHub 
+GitLab 
+Gerrit 
+Redmine 
+Copilot 
+Claude Code 
+Aider 
+Goose 
+Codex 
+Gemini CLI 
+OpenCode 
+Cursor 
+GitHub 
+GitLab 
+Gerrit 
+Redmine 
+Copilot 
+
+How it works 
+
+## From assigned ticket to reviewed change.
+
+Virtual Engineer carries the work through implementation, review feedback, and retries while your existing approval rules stay in place.
+
+01
+
+Detect
+
+Watches Redmine, GitLab, and GitHub Issues for tickets assigned to it.
+
+02
+
+Build
+
+Clones the repo host-side, uploads the workspace into an ephemeral sandbox, and runs the agent there.
+
+03
+
+Review
+
+Opens the change and answers reviewer feedback with follow-up commits, automatically.
+
+04
+
+Ship
+
+Once merged, the task closes itself out. No status meeting required.
+
+Product 
+
+## Built for real engineering workflows.
+
+⇄
+
+Agent engines
+
+Copilot, Claude Code, Aider, Goose, Codex, Gemini CLI, OpenCode, or Cursor — the workflow stays the same.
+
+◎
+
+Review agent, too
+
+A second workflow reviews incoming patchsets: fetches the diff, posts inline comments, and casts a vote.
+
+⛊
+
+OpenShell sandbox by design
+
+Every cycle runs in an ephemeral OpenShell sandbox under deny-by-default runtime policies. Push credentials stay host-side.
+
+↻
+
+Feedback loops
+
+Understands reviewer comments and retries with the fix, no re-briefing needed.
+
+▤
+
+Full audit trail
+
+Every state transition lands in the state_transitions table, alongside model usage and AI cost.
+
+◒
+
+Self-hosted
+
+A TypeScript orchestrator plus SQLite on your own infrastructure. Provider credentials are encrypted at rest.
+
+Security 
+
+## Autonomous doesn't mean unsupervised.
+
+Ephemeral OpenShell sandboxes
+
+Each cycle gets a deny-by-default OpenShell policy; only declared egress is opened, and provider push credentials remain on the host.
+
+Full audit trail
+
+Every state transition, retry, and comment is recorded — nothing happens off the record.
+
+You stay in control
+
+Pause, resume, or abandon any task at any time. Nothing merges without your review process.
+
+Read the full security page → 
+
+## Let it take the next ticket.
+
+Point Virtual Engineer at a project and see the first change land.
+
+Get Started 
+Request a Demo
+
+========================================================================
+Virtual Engineer — documentation
+========================================================================
+
+Virtual Engineer 
+
+By 
+Savoir-faire Linux 
+
+How it works 
+Docs 
+Integrations 
+Security 
+About us 
+
+In this section 
+
+All pages 
+
+/ 
+
+# 
+
+Something wrong on this page? 
+
+Edit source 
+Raise an issue 
+
+© 2026 Virtual Engineer · GPL-3.0-only 
+
+By 
+Savoir-faire Linux 
+
+← Back to overview
+
+========================================================================
+Virtual Engineer — integrations
+========================================================================
+
+Virtual Engineer 
+
+By 
+Savoir-faire Linux 
+
+How it works 
+Docs 
+Integrations 
+Security 
+About us 
+
+# Twelve built-in providers.
+
+Four external systems for tickets, code, and review, plus eight agent engines for the cycle. Configure them from the authenticated Admin UI; secrets are encrypted at rest in SQLite.
+
+## External systems
+
+4 
+
+Redmine 
+
+GitLab 
+
+GitHub 
+
+Gerrit 
+
+## Agent engines
+
+8 
+
+Choose the engine per agent while the surrounding workflow stays the same. Aider, Goose, and OpenCode can each work with a broad set of LLM backends.
+
+GitHub Copilot 
+
+Claude Code 
+
+Aider 
+
+Goose 
+
+Codex 
+
+Gemini CLI 
+
+OpenCode 
+
+Cursor 
+
+A project binds one integration per capability, so tickets can come from Redmine while code goes to GitLab. Multiple active integrations of the same provider can run in parallel, and a review-only project needs no issue tracker.
+
+© 2026 Virtual Engineer 
+
+By 
+Savoir-faire Linux 
+
+← Back to overview
+
+========================================================================
+Virtual Engineer — security
+========================================================================
+
+Virtual Engineer 
+
+By 
+Savoir-faire Linux 
+
+How it works 
+Docs 
+Integrations 
+Security 
+About us 
+
+# Autonomous doesn't mean unsupervised.
+
+The agent runs with the least access it needs: an ephemeral OpenShell sandbox per cycle, no push or review credentials inside it, and a record of everything it did.
+
+Ephemeral OpenShell sandboxes
+
+One sandbox per cycle, destroyed on exit, under a deny-by-default runtime policy. The agent never holds provider credentials.
+
+Full audit trail
+
+Every state transition, retry, and comment is recorded — nothing happens off the record.
+
+You stay in control
+
+Pause, resume, or abandon any task at any time. Nothing merges without your review process.
+
+## What the sandbox gets
+
+Each cycle runs in an ephemeral OpenShell sandbox, created per cycle and destroyed on exit. Network, filesystem, process, and inference access are denied by default; the resolved policy grants only the declared exceptions. The orchestrator clones host-side, uploads the workspace, executes the agent, downloads the result, then pushes from the trusted host. Provider push and review credentials never enter the sandbox.
+
+version: 1
+filesystem_policy:
+read_only: [/usr, /lib, /proc, /dev/urandom,
+/app, /etc, /var/log]
+read_write: [/sandbox, /tmp, /dev/null]
+process:
+run_as_user: sandbox 
+
+## Boundaries
+
+filesystem 
+Only /sandbox, /tmp and /dev/null are writable. A read_write entry naming /, /usr, /lib, /etc, /app, /bin, /sbin, /boot or /var is rejected. 
+
+process 
+Process access is denied by default and runs as the unprivileged sandbox user; enforceSandboxFloor re-asserts the floor after any policy override. 
+
+network 
+Network access is denied by default. Each run opens only the hosts its adapter declares through allowEgress. 
+
+credentials 
+The host owns all push and review credentials and runs the Git plumbing itself. They never enter the sandbox. 
+
+mcp surface 
+The internal VE MCP server exposes only ve_submit_review or ve_submit_changes — no network tools, no database, no Docker socket. 
+
+## Secrets and webhooks
+
+Rotatable per integration
+
+Each integration holds its own webhook secret and credentials. Rotating one never interrupts the others.
+
+Signed deliveries
+
+GitLab and GitHub events are verified with HMAC signatures before anything is queued. Gerrit uses a persistent SSH stream instead.
+
+Audit log — task #4812 
+append-only 
+
+14:02:11 
+DETECTED 
+redmine#4812 assigned to virtual-engineer 
+
+14:02:14 
+CONTEXT_BUILDING 
+workspace cloned host-side, sandbox ve-a91c created 
+
+14:03:40 
+AGENT_RUNNING 
+patch generated, 3 files, 118 insertions 
+
+14:03:52 
+IN_REVIEW 
+merge request !219 opened on payments-api 
+
+14:06:03 
+REVIEW_VOTE 
++1 with 2 inline comments 
+
+14:11:27 
+RETRY_CYCLE 
+feedback deduplicated, sandbox ve-b04f created 
+
+14:18:09 
+MERGED 
+merged by a.dupont — branch protection satisfied 
+
+## Every cycle on the record
+
+State transitions, retries, review votes, and comments are written to an append-only log tied to the task. Nothing is edited after the fact, so a task can be replayed exactly as it ran — including the cycles that failed.
+
+## What is stored, what never is
+
+Stored
+
+Task metadata: title, description, and git author fields
+
+Every state transition in state_transitions, with metadata
+
+Diffs and review comments the agent produced
+
+Provider credentials, AES-256-GCM encrypted in SQLite and masked on every admin read
+
+Never stored
+
+Plaintext credentials — plaintext credential writes are rejected
+
+Webhook secrets in readable form after creation — rotation is per integration
+
+Sandbox filesystems — the sandbox is destroyed when the cycle exits
+
+Source code beyond the repositories you bind
+
+## Operator controls
+
+PAUSE
+
+Pause a task
+
+Recorded as a state_transitions row, so pausing and resuming are part of the same audit trail.
+
+ABANDON
+
+Abandon a task
+
+Moves the task to the terminal ABANDONED state, persists the reason, and leaves the log intact.
+
+ROTATE
+
+Rotate a secret
+
+Replaces a webhook secret or token per integration, effective on the next delivery.
+
+## Common questions
+
+Can the agent merge its own work?
+
+No. It opens the change and votes on review; merging goes through the same branch protection and approvals as any human contributor.
+
+What happens if a cycle crashes mid-run?
+
+SQLite runs in WAL mode and the state machine is persisted, so coding tasks resume at their last recorded state after a restart. AGENT_RUNNING restarts from scratch, since the sandbox is ephemeral.
+
+How do we report a vulnerability?
+
+Privately, to contact@savoirfairelinux.com rather than a public issue. Reports are acknowledged within 48 hours and assessed within 7 days.
+
+Can we run it fully self-hosted?
+
+Yes. The orchestrator, SQLite database, OpenShell gateway, and sandboxes all run on your infrastructure. Keep the Admin UI on loopback or behind a trusted reverse proxy.
+
+## Read the sandbox details.
+
+The documentation covers the sandbox policy, the agent engines, and the review lifecycle.
+
+Open the docs 
+
+© 2026 Virtual Engineer 
+
+By 
+Savoir-faire Linux 
+
+← Back to overview
+
+========================================================================
+Virtual Engineer — about us
+========================================================================
+
+Virtual Engineer 
+
+By 
+Savoir-faire Linux 
+
+How it works 
+Docs 
+Integrations 
+Security 
+About us 
+
+About Virtual Engineer 
+
+# Open source engineering, built by Savoir-faire Linux.
+
+Virtual Engineer carries software work from an assigned ticket to a reviewed change. It is developed by Savoir-faire Linux and designed to run on infrastructure your team controls.
+
+View source on GitHub 
+Meet Savoir-faire Linux 
+
+The team behind the project 
+
+Savoir-faire Linux is the open-source technology company behind Virtual Engineer. Its engineers build and maintain production software with a focus on transparent systems, durable foundations, and user control.
+
+Visit Savoir-faire Linux -> 
+
+Why this project 
+
+## Keep the workflow yours.
+
+Virtual Engineer connects issue trackers, source control, review systems, and AI agent engines without asking teams to move their work into a separate closed platform.
+
+Savoir-faire Linux maintains the project as open source so teams can inspect the code, adapt it to their environment, run it on their own infrastructure, and contribute improvements.
+
+Source 
+github.com/savoirfairelinux/virtual-engineer 
+
+License 
+GPL-3.0-only 
+
+Maintainer 
+Savoir-faire Linux 
+
+Open source by default 
+
+## Built for teams that own their workflow.
+
+Inspect
+
+The source stays visible.
+
+Read the implementation, follow changes, and understand how each part of the cycle works.
+
+Adapt
+
+Run it where you work.
+
+Keep tasks, credentials, execution, and review inside the infrastructure and policies you already trust.
+
+Contribute
+
+Shape the project with us.
+
+Use the public repository to report issues, propose improvements, and help make the workflow better for everyone.

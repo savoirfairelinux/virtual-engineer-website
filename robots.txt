@@ -1,4 +1,48 @@
 User-agent: *
 Allow: /
 
+# AI crawlers and agent fetch tools are explicitly welcome here.
+# This is a static marketing and documentation site: there is no private
+# content, no user data, and no write endpoints. See /agents.txt for the full
+# access policy and /llms.txt for a content index.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
 Sitemap: https://virtual-engineer.dev/sitemap.xml

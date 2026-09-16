@@ -1,0 +1,99 @@
+# Virtual Engineer
+
+> Open-source engineering automation that carries software work from an assigned
+> ticket to a reviewed change. It connects issue trackers, source control, review
+> systems, and AI agent engines your team already uses, and runs every cycle on
+> your own infrastructure. Built and maintained by Savoir-faire Linux.
+
+Virtual Engineer is not a hosted SaaS. It is a self-hosted TypeScript orchestrator
+plus SQLite that polls issue trackers for tickets assigned to it, runs a coding
+agent in an ephemeral OpenShell sandbox, opens a change for review, answers
+reviewer feedback with follow-up commits, and closes the task once merged.
+
+## Installation
+
+The installer is a thin proxy that always fetches the current installer from the
+upstream repository. It requires a POSIX shell with `curl`, and Node.js on the
+target host.
+
+```sh
+curl -fsSL https://virtual-engineer.dev/install.sh | bash
+```
+
+Source and issue tracker:
+
+- [Source repository](https://github.com/savoirfairelinux/virtual-engineer)
+- [Installation documentation](https://virtual-engineer.dev/documentation.html#/start)
+
+## Endpoints
+
+This website is a static marketing and documentation site. There is no hosted
+API, no MCP endpoint, and no paid endpoint — the product runs on infrastructure
+you control.
+
+| Path | Content |
+| --- | --- |
+| `/install.sh` | Shell installer proxy (text/x-shellscript) |
+| `/llms.txt` | This file |
+| `/llms-full.txt` | Full concatenated text of all pages on this site |
+| `/agents.txt` | Agent access policy for this site |
+| `/sitemap.xml` | XML sitemap |
+| `/robots.txt` | Crawler directives |
+| `/feed.xml` | RSS feed of site updates |
+| `/.well-known/agent-card.json` | A2A agent card |
+
+Human-readable pages:
+
+- [Home](https://virtual-engineer.dev/) — product overview, pipeline, and features
+- [Documentation](https://virtual-engineer.dev/documentation.html) — installation, configuration, and operations
+- [Integrations](https://virtual-engineer.dev/integrations.html) — supported trackers, review systems, and agent engines
+- [Security](https://virtual-engineer.dev/security.html) — sandbox model, credentials, and audit trail
+- [About us](https://virtual-engineer.dev/about.html) — project governance, license, and maintainer
+
+## Authentication
+
+None. Everything on this site is public and requires no credentials. The
+installer is served over HTTPS without authentication and downloads its payload
+from `raw.githubusercontent.com`.
+
+## Examples
+
+Check that the installer is reachable before running it:
+
+```sh
+curl -fsSI https://virtual-engineer.dev/install.sh
+```
+
+Install and run the orchestrator on your own host:
+
+```sh
+curl -fsSL https://virtual-engineer.dev/install.sh | bash
+```
+
+Read the documentation as plain text without scraping HTML:
+
+```sh
+curl -fsSL https://virtual-engineer.dev/llms-full.txt
+```
+
+## Supported integrations
+
+Issue trackers: GitHub Issues, GitLab, Redmine.
+
+Change review: GitHub Pull Requests, GitLab Merge Requests, Gerrit.
+
+Agent engines: GitHub Copilot, Claude Code, Aider, Goose, Codex, Gemini CLI,
+OpenCode, Cursor.
+
+## Operations
+
+- Runtime: Node.js orchestrator with SQLite storage, self-hosted.
+- Sandboxing: every cycle runs in an ephemeral OpenShell sandbox under
+  deny-by-default runtime policies; push credentials stay host-side.
+- Audit: every state transition is recorded, alongside model usage and cost.
+- Licence: GPL-3.0-only.
+
+## Optional
+
+- [Source repository](https://github.com/savoirfairelinux/virtual-engineer) — GPL-3.0-only source, issues, and contributions
+- [Savoir-faire Linux](https://savoirfairelinux.com) — the company maintaining the project

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtual Engineer</title>
+    <link>https://virtual-engineer.dev/</link>
+    <description>Open-source engineering automation that carries software work from an assigned ticket to a reviewed change. Self-hosted, maintained by Savoir-faire Linux.</description>
+    <language>en</language>
+    <copyright>GPL-3.0-only — Savoir-faire Linux</copyright>
+    <atom:link href="https://virtual-engineer.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Documentation</title>
+      <link>https://virtual-engineer.dev/documentation.html</link>
+      <guid isPermaLink="true">https://virtual-engineer.dev/documentation.html</guid>
+      <description>Installation, configuration, and operations reference for Virtual Engineer: prerequisites, installing the orchestrator, connecting issue trackers and review systems, configuring AI agent engines, and running it in production.</description>
+    </item>
+    <item>
+      <title>Integrations</title>
+      <link>https://virtual-engineer.dev/integrations.html</link>
+      <guid isPermaLink="true">https://virtual-engineer.dev/integrations.html</guid>
+      <description>Supported issue trackers, change review systems, and AI agent engines, and how they connect to the Virtual Engineer workflow.</description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://virtual-engineer.dev/security.html</link>
+      <guid isPermaLink="true">https://virtual-engineer.dev/security.html</guid>
+      <description>How Virtual Engineer isolates agent execution: ephemeral OpenShell sandboxes, deny-by-default runtime policies, host-side credentials, and the audit trail recorded for every cycle.</description>
+    </item>
+    <item>
+      <title>About us</title>
+      <link>https://virtual-engineer.dev/about.html</link>
+      <guid isPermaLink="true">https://virtual-engineer.dev/about.html</guid>
+      <description>Project governance, licence, and the maintainer behind Virtual Engineer.</description>
+    </item>
+  </channel>
+</rss>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="256x256" href="assets/brand-virtual-engineer-256.png">
 <link rel="canonical" href="https://virtual-engineer.dev/about.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/brand-virtual-engineer-256.png">
 <meta name="description" content="Learn how Virtual Engineer is built and maintained by Savoir-faire Linux as an open-source project.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About us — Virtual Engineer">
@@ -15,8 +15,58 @@
 <meta property="og:image:alt" content="Virtual Engineer logo">
 <meta name="twitter:card" content="summary">
 <title>About us — Virtual Engineer</title>
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<link rel="alternate" type="text/plain" title="llms-full.txt" href="/llms-full.txt">
+<link rel="alternate" type="application/rss+xml" title="Virtual Engineer" href="/feed.xml">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://virtual-engineer.dev/#organization",
+      "name": "Virtual Engineer",
+      "url": "https://virtual-engineer.dev/",
+      "logo": "https://virtual-engineer.dev/assets/brand-virtual-engineer-256.png",
+      "description": "Open-source engineering automation that carries software work from an assigned ticket to a reviewed change, maintained by Savoir-faire Linux.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Savoir-faire Linux",
+        "url": "https://savoirfairelinux.com"
+      },
+      "sameAs": [
+        "https://github.com/savoirfairelinux/virtual-engineer",
+        "https://github.com/savoirfairelinux/virtual-engineer-website",
+        "https://savoirfairelinux.com"
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://virtual-engineer.dev/about.html#webpage",
+      "url": "https://virtual-engineer.dev/about.html",
+      "name": "About us — Virtual Engineer",
+      "description": "Project governance, licence, and the maintainer behind Virtual Engineer.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://virtual-engineer.dev/#website" },
+      "about": { "@id": "https://virtual-engineer.dev/#software" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://virtual-engineer.dev/#software",
+      "name": "Virtual Engineer",
+      "url": "https://virtual-engineer.dev/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux, macOS",
+      "isAccessibleForFree": true,
+      "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "description": "Self-hosted orchestrator that carries software work from an assigned ticket to a reviewed change.",
+      "author": { "@id": "https://virtual-engineer.dev/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="ve-blob-anchor b1"><div class="ve-blob-inner"></div></div>
